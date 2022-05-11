@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-07 13:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: accounts/forms.py:13
+msgid "Remember Me"
+msgstr "Запамʼятати мене"
+
+#: accounts/forms.py:17
+msgid "Login"
+msgstr "Логін"
+
+#: accounts/forms.py:32
+msgid "This email is already taken"
+msgstr "Email вже зайнято"
+
+#: accounts/forms.py:61
+msgid "Mobile"
+msgstr "Телефон"
+
+#: accounts/forms.py:64 accounts/models.py:16
+msgid "Address"
+msgstr "Адреса"
+
+#: accounts/forms.py:85
+msgid "Password"
+msgstr "Пароль"
+
+#: accounts/forms.py:99
+msgid "The entered password is not valid!"
+msgstr "Неправильний пароль"
+
+#: accounts/models.py:14
+#, fuzzy
+#| msgid "Mobile"
+msgid "Mobile number"
+msgstr "Телефон"
+
+#: accounts/views.py:37
+msgid "You have successfully logged in as {}"
+msgstr "Ви успішно увійшли як {}"
+
+#: accounts/views.py:48
+msgid "You have successfully logged out"
+msgstr "Ви успішно вийшли з сайту"
+
+#: accounts/views.py:60
+msgid "Password reset link was sent to your email address"
+msgstr ""
+"Посилання для відновлення паролю було відправлене на вашу електронну адресу"
+
+#: accounts/views.py:71 accounts/views.py:127
+msgid "Your password has been changed"
+msgstr "Ваш пароль змінено"
+
+#: accounts/views.py:83
+msgid "Email confirmation link was sent to your email"
+msgstr ""
+"На вашу електронну адресу було відправлене повідомлення для підтвердження"
+
+#: accounts/views.py:146
+msgid "Profile successfully changed"
+msgstr "Профіль успірно змінено"
+
+#: accounts/views.py:169
+msgid "Profile successfully removed"
+msgstr "Профіль успішно видалено"
+
+#: accounts/views.py:193
+msgid "Your account is activated"
+msgstr "Ваш аккаунт активовано"
+
+#: accounts/views.py:197
+msgid "Activation link is invalid"
+msgstr "Посилання активації неправильне"

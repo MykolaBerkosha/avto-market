@@ -1,0 +1,23 @@
+
+djrunner==0.0.3
+djassets==0.0.2
+
+awesome-slugify==1.6.5
+django-widget-tweaks==1.4.8
+django-mp-pagination==0.2
+sorl-thumbnail==12.7.0
+django-watermarks==2.0
+django-mp-slider==0.3
+django-ordered-model==3.4.3
+django-mp-notify==0.1
+django-ckeditor==6.1.0
+django-mp-accounts==3.2
+django-recaptcha==2.0.6
+
+django-modeltranslation
+
+
+bs4
+xlwt
+
+-e git://github.com/darklow/django-suit.git@v2#egg=django-suit

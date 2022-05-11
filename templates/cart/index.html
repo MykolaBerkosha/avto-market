@@ -1,0 +1,61 @@
+
+{% extends 'modal.html' %}
+
+{% load i18n cart %}
+
+{% block title %}
+    {% trans "Cart" %}
+{% endblock %}
+
+{% block body %}
+
+    {% get_cart as cart %}
+
+    <table class="table table-bordered">
+
+        <tbody>
+            {% for product in cart.get_products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <form action="{% url 'cart:remove' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                            <button type="submit"
+                                    name="product"
+                                    class="btn btn-danger"
+                                    value="{{ product.id }}">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="4" class="text-end">
+                    <b>{{ cart.total }} uah</b>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block footer %}
+    <a href="{% url 'orders:checkout' %}" class="btn btn-success float-end">
+        <i class="fa fa-check"></i>
+        {% trans "Checkout" %}
+    </a>
+
+    <form action="{% url 'cart:clear' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            <button type="submit" class="btn btn-default">
+                <i class="fa fa-trash"></i>
+                {% trans "Clean" %}
+            </button>
+        </form>
+
+{% endblock %}

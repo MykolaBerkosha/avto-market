@@ -1,0 +1,113 @@
+
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{{ STATIC_URL }} product-list.css">
+</head>
+
+{% block content %}
+
+    <div class="category-title">
+        <h4>{{ category.name }}</h4>
+    </div>
+
+{#    <ul>#}
+{#        {% for product in page_obj.object_list %}#}
+{#            <li>#}
+{##}
+{#                {% if request.user.is_staff %}#}
+{#                    <button type="button" data-role="edit-product" data-url="{% url 'admin:products_product_change' product.id %}?_popup=1">#}
+{#                        {% trans "Edit" %}#}
+{#                    </button>#}
+{#                {% endif %}#}
+{#                {% if product.logo %}#}
+{#                    <img src="{{ product.logo.url }}" width="100">#}
+{#                {% else %}#}
+{#                    No logo#}
+{#                {% endif %}#}
+{#            </li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+
+    <div class="container">
+        <div class="row">
+            {% for product in page_obj.object_list %}
+                <div class="col-lg-4 col-sm-4 mb-3">
+                    <div class="product-card">
+                        <a  class="link" href="{{ product.get_absolute_url }}">
+                            <div class="product-thumb">
+
+                                {% if product.logo %}
+                                    <p style="text-align: center">
+                                        <img src="{{ product.logo.url }}">
+                                    </p>
+                                {% else %}
+                                    No logo
+                                {% endif %}
+                            </div>
+                            <div class="product-details">
+                                <div class="product-title">
+                                    <h4>{{ product.name }}</h4>
+                                </div>
+                                {{ product.description|truncatechars:200 }}
+                            </div>
+                            <div class="product-bottom-details d-flex justify-content-between">
+
+                                <div class="product-price">
+                                    {% if product.new_price %}
+                                        <small>{{ product.price }}$</small>{{ product.new_price }}
+                                    {% endif %}
+                                    <div class="product-price-old">
+                                        {% if product.new_price is None%}
+                                            {{ product.price }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="product-links">
+                                    <form action="{% url 'cart:add' %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                        <button type="submit"
+                                                name="product"
+                                                {% if is_added_to_cart %}disabled{% endif %}
+                                                value="{{ product.id }}">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {{ page_obj.render }}
+
+{% endblock %}
+
+
+{% block js %}
+    {{ block.super }}
+    <script>
+        (function ($) {
+            $('[data-role=edit-product]').on('click', function () {
+                window.open(
+                    $(this).data('url'),
+                    "",
+                    "left=100,top=100,width=1000,height=600"
+                );
+            });
+
+            window.dismissChangeRelatedObjectPopup = function (popup) {
+                popup.close();
+                window.location.reload();
+            };
+        })(jQuery);
+    </script>
+{% endblock %}

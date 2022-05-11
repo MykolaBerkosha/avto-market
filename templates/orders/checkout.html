@@ -1,0 +1,100 @@
+
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+
+{% block content %}
+    <form method="post">
+        <div class="container">
+            <div class="row">
+            <div class="block-order">
+                <div class="order-title">
+                    {% trans "Contact info" %}
+                </div>
+                <div class="order-info">
+                    <table class="table-order-contact">
+                        <tr>
+                            <td>{% trans "Shop" %}</td>
+                            <td>{{ form.name_shop }}</td>
+                        </tr>
+                        <tr>
+                            <td>{% trans "City" %}</td>
+                            <td>{{ form.city }}</td>
+                        </tr>
+                        <tr>
+                            <td>{% trans "Mobile number" %}</td>
+                            <td>{{ form.mobile }}</td>
+                        </tr>
+                    </table>
+                    <div class="order-delivery">
+                        <div class="order-delivery-title">
+                            {% trans "Choose a delivery method" %}
+                        </div>
+                        <div class="order-delivery-method">
+                            {% trans "Delivery method" %}
+                            {{ form.delivery_method }}
+                        </div>
+                        <div data-role="address">
+                            <table class="table-delivery-district">
+                                <tr>
+                                    <td>{% trans "District" %}</td>
+                                    <td>{{ form.delivery_district_address }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% trans "Region" %}</td>
+                                    <td>{{ form.delivery_region_address }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% trans "Post office" %}</td>
+                                    <td>{{ form.post_office }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    {{ form.numbers }}
+                </div>
+                <div class="order-card">
+                    <h4>{% trans "Cart" %}</h4>
+                    <table class="table-order-cart">
+                        {% for product in cart.get_products %}
+                            <tr>
+                                <td>{{ product.name }}</td>
+                                <td style="text-align: right">{{ product.price }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <div class="order-sum">
+                        <table class="table-order-sum">
+                            <tr>
+                                <td>{% trans "Amount due" %}</td>
+                                <td style="text-align: right">{{ cart.total }} uah</td>
+                            </tr>
+                        </table>
+                    </div>
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check"></i>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script>
+        (function ($) {
+
+            new SelectChainedBox({
+                $select: $('#{{ form.delivery_method.auto_id }}'),
+                $target: $('[data-role=address]'),
+                value: 'SELF-PICKUP',
+                isReversed: true
+            });
+        })(jQuery);
+    </script>
+{% endblock %}
+

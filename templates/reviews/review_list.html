@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+
+{% block content %}
+
+    <button type="button" data-role="add-review" data-url="{% url 'reviews:add' %}">
+        {% trans "Add review" %}
+    </button>
+
+    {% for object in object_list %}
+        <div>
+            <p>{{ object.name }}</p>
+            <p>{{ object.text|safe }}</p>
+            <p>Raing: {{ object.rating }}</p>
+            <hr>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+
+{% block js %}
+    {{ block.super }}
+    <script>
+        (function ($) {
+            new Modal({
+                $target: $('[data-role=add-review]'),
+                onSuccess: function (response) {
+                    window.location.reload();
+                }
+            });
+        })(jQuery);
+    </script>
+{% endblock %}

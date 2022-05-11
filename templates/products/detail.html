@@ -1,0 +1,193 @@
+
+{% extends 'base.html' %}
+
+{% load i18n thumbnail %}
+
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{{ STATIC_URL }} styles.css">
+</head>
+
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+
+{% block content %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">
+                    {% trans "Home" %}
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{{ product.category.get_absolute_url }}">
+                    {{ product.name }}
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                {{ product.name }}
+            </li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="container">
+            <div class=" product-border product-name-title">
+                {% if request.user.is_staff %}
+                    <a href="{% url 'admin:products_product_change' product.id %}" target="_blank">
+                        <h4>{{ product.name }}</h4>
+                    </a>
+                {% else %}
+                    <h4>{{ product.name }}</h4>
+                {% endif %}
+            </div>
+            <div class="detail">
+            <a href="#" class="product__image product-border">
+                <div class="product__switch image-switch">
+                    <div class="image-switch__item">
+                        {% thumbnail product.logo "1000"  crop="center" as img %}
+                            <img src="{{ img.url }}" class="image-switch__img" alt="Макбук">
+                        {% empty %}
+                             No logo
+                        {% endthumbnail %}
+                    </div>
+                </div>
+                <ul class="product__image-pagination image-pagination" aria-hidden="true"></ul>
+            </a>
+
+{#                    {% thumbnail product.logo "120"  crop="center" as img %}#}
+{#                        <img src="{{ img.url }}" class="">#}
+{#                    {% empty %}#}
+{#                        No logo#}
+{#                    {% endthumbnail %}#}
+
+            <div class="product-info">
+                <div class="product-price-info">
+                    {% if product.availability is True  %}
+                        <div class="availability_done">
+                            <img src="{{ STATIC_URL }}img/availability_don_icon.png" class="availability_img">
+                            <h4>{% trans "Availability" %}</h4>
+                        </div>
+                    {% else %}
+                        <div class="availability-cancel">
+                            <img src="{{ STATIC_URL }}img/availability_cancel_icon.png" class="availability_img">
+                            <h4>{% trans "Under the order" %}</h4>
+                        </div>
+                    {% endif %}
+                    {% if product.new_price %}
+                        <small>{{ product.price }}$</small>
+                        <div class="product-price-sell">
+                            {{ product.new_price }}$
+                        </div>
+                    {% endif %}
+                    <div class="product-price-button">
+                        <form action="{% url 'cart:add' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                            <button type="submit"
+                                    name="product"
+                                    class="btn btn-buy_product"
+                                    {% if is_added_to_cart %}disabled{% endif %}
+                                    value="{{ product.id }}">
+                                <i class="fa fa-shopping-cart"></i>
+                                {% trans "Add to cart" %}
+                            </button>
+                        </form>
+                        <div class="product-price-quick-checkout">
+                            <form action="{% url 'orders:quick-checkout' %}"
+                                  method="post"
+                                  data-role="quick-checkout-form"
+                                  class="mb-5">
+
+                                {% csrf_token %}
+
+                                {{ quick_checkout_form.product }}
+
+                                <div class="input-group">
+                                    {{ quick_checkout_form.mobile }}
+                                    <button class="btn btn-buy_product" type="submit">
+                                        {% trans "Buy" %}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <table class="table-product">
+                    <tr>
+                        <td>{% trans 'Category' %}: </td>
+                        <td>{{ product.category.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans 'Price' %}:</td>
+                        <td>{{ product.price }}</td>
+                    </tr>
+                    {% if product.code %}
+                        <tr>
+                            <td>{% trans 'Сode' %}:</td>
+                            <td>{{ product.code }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if product.cars %}
+                        <tr>
+                            <td>{% trans 'Сars' %}:</td>
+                            <td>{{ product.cars }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if product.year %}
+                        <tr>
+                            <td>{% trans 'Year' %}:</td>
+                            <td>{{ product.year }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if product.manufacturer %}
+                        <tr>
+                            <td>{% trans 'Manufacturer' %}:</td>
+                            <td>{{ product.manufacturer }}</td>
+                        </tr>
+                    {% endif %}
+                </table>
+                <div class="product-description-label">
+                    {% trans 'Description '%}:
+                </div>
+                <div class="product-description">
+                    {{ product.description }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block js %}
+    {{ block.super }}
+
+    <script>
+        (function ($) {
+
+            var $form = $('[data-role=quick-checkout-form]');
+
+            $form.submit(function (event) {
+                event.preventDefault();
+
+                $.post($form.prop('action'), $form.serialize(), function (response) {
+                    $form.remove();
+
+                    $.notify({
+                        message: response.message
+                    }, {
+                        type: 'success'
+                    });
+                });
+            });
+
+        })(jQuery);
+    </script>
+{% endblock %}
