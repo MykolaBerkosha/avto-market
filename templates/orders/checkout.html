@@ -52,7 +52,6 @@
                             </table>
                         </div>
                     </div>
-                    {{ form.numbers }}
                 </div>
                 <div class="order-card">
                     <h4>{% trans "Cart" %}</h4>
@@ -62,20 +61,24 @@
                                 <td>{{ product.name }}</td>
                                 <td style="text-align: right">{{ product.price }}</td>
                             </tr>
+                            <tr>
+                            <td> {% trans 'Numbers' %} </td>
+                             <td>{{ form.numbers }}</td>
+                            </tr>
                         {% endfor %}
                     </table>
                     <div class="order-sum">
                         <table class="table-order-sum">
                             <tr>
                                 <td>{% trans "Amount due" %}</td>
-                                <td style="text-align: right">{{ cart.total }} uah</td>
+                                <td style="text-align: right"><p>{{ cart.total }}uah</p> </td>
                             </tr>
                         </table>
                     </div>
                     {% csrf_token %}
                     <button type="submit" class="btn btn-success">
                         <i class="fa fa-check"></i>
-                        Save
+                        {% trans 'Save' %}
                     </button>
                 </div>
             </div>

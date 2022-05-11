@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-07 13:16+0300\n"
+"POT-Creation-Date: 2022-05-11 23:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,39 +47,43 @@ msgstr "Категорія"
 msgid "Categories"
 msgstr "Категорії"
 
-#: apps/orders/models.py:9 templates/orders/checkout.html:19
-msgid "First name"
-msgstr "Імя"
+#: apps/orders/models.py:9 templates/orders/checkout.html:18
+msgid "Shop"
+msgstr "Магазин"
 
-#: apps/orders/models.py:12 templates/orders/checkout.html:23
-msgid "Last name"
-msgstr "Прізвища"
+#: apps/orders/models.py:11 templates/orders/checkout.html:22
+msgid "City"
+msgstr "Місто/селище/село"
 
-#: apps/orders/models.py:14 templates/orders/checkout.html:27
+#: apps/orders/models.py:13 templates/orders/checkout.html:26
 msgid "Mobile number"
 msgstr "Номер телефону"
 
-#: apps/orders/models.py:16
+#: apps/orders/models.py:15
+msgid "Number of parts"
+msgstr ""
+
+#: apps/orders/models.py:17
 msgid "Created"
 msgstr "Створити"
 
-#: apps/orders/models.py:22
+#: apps/orders/models.py:23
 msgid "Self-pickup"
 msgstr "Самовивіз"
 
-#: apps/orders/models.py:27 apps/orders/models.py:29
+#: apps/orders/models.py:28 apps/orders/models.py:30
 msgid "Delivery district address"
 msgstr ""
 
-#: apps/orders/models.py:31 templates/orders/checkout.html:50
+#: apps/orders/models.py:32 templates/orders/checkout.html:49
 msgid "Post office"
 msgstr "Поштове відділення"
 
-#: apps/orders/models.py:37
+#: apps/orders/models.py:38
 msgid "Order"
 msgstr ""
 
-#: apps/orders/models.py:38
+#: apps/orders/models.py:39
 msgid "Orders"
 msgstr ""
 
@@ -93,49 +97,39 @@ msgstr ""
 
 #: apps/products/models.py:35
 msgid "Price with sale"
-msgstr ""
+msgstr "Знижка"
 
 #: apps/products/models.py:41
 msgid "Tags"
 msgstr ""
 
-#: apps/products/models.py:48 templates/products/detail.html:132
-msgid "Type"
-msgstr "Тип"
+#: apps/products/models.py:46
+#, fuzzy
+#| msgid "Description "
+msgid "Description"
+msgstr "Опис"
 
-#: apps/products/models.py:50 templates/products/detail.html:138
-msgid "Material"
-msgstr "Матеріал"
+#: apps/products/models.py:48
+msgid "Code"
+msgstr ""
 
-#: apps/products/models.py:52 templates/products/detail.html:144
-msgid "Water resistance"
-msgstr "Водостійкість"
+#: apps/products/models.py:50
+msgid "Cars"
+msgstr ""
 
-#: apps/products/models.py:54
+#: apps/products/models.py:52
+msgid "Graduation year"
+msgstr "Рік випуску"
+
+#: apps/products/models.py:54 templates/products/detail.html:150
 msgid "Manufacturer"
 msgstr "Виробник"
 
-#: apps/products/models.py:56 templates/products/detail.html:150
-msgid "Case diameter"
-msgstr "Діаметр корпуса"
-
-#: apps/products/models.py:58
-msgid "Band Width:"
-msgstr "Шерина ремішка"
-
-#: apps/products/models.py:60 templates/products/detail.html:162
-msgid "Functions"
-msgstr "Функції"
-
-#: apps/products/models.py:62
-msgid "Coating"
-msgstr "Покриття"
-
-#: apps/products/models.py:77
+#: apps/products/models.py:69
 msgid "Product"
 msgstr "Товар"
 
-#: apps/products/models.py:78
+#: apps/products/models.py:70
 msgid "Products"
 msgstr "Товари"
 
@@ -485,8 +479,8 @@ msgstr ""
 msgid "вийти"
 msgstr ""
 
-#: templates/base.html:55 templates/cart/index.html:12
-#: templates/orders/checkout.html:59
+#: templates/base.html:55 templates/cart/index.html:7
+#: templates/orders/checkout.html:57
 msgid "Cart"
 msgstr ""
 
@@ -519,7 +513,8 @@ msgstr "Увійти"
 msgid "Реєстрація"
 msgstr ""
 
-#: templates/callback/add_callback.html:28 templates/reviews/add.html:28
+#: templates/callback/add_callback.html:28 templates/orders/checkout.html:81
+#: templates/reviews/add.html:28
 msgid "Save"
 msgstr "Зберегти"
 
@@ -527,35 +522,39 @@ msgstr "Зберегти"
 msgid "Cancel"
 msgstr "Відмінити"
 
-#: templates/cart/index.html:107
+#: templates/cart/index.html:49
 msgid "Checkout"
-msgstr ""
+msgstr "Замовити"
 
-#: templates/cart/index.html:115
+#: templates/cart/index.html:57
 msgid "Clean"
 msgstr ""
 
-#: templates/orders/checkout.html:14
+#: templates/orders/checkout.html:13
 msgid "Contact info"
 msgstr "Контактна інформація"
 
-#: templates/orders/checkout.html:33
+#: templates/orders/checkout.html:32
 msgid "Choose a delivery method"
 msgstr "Оберіть спосіб доставки"
 
-#: templates/orders/checkout.html:36
+#: templates/orders/checkout.html:35
 msgid "Delivery method"
 msgstr ""
 
-#: templates/orders/checkout.html:42
+#: templates/orders/checkout.html:41
 msgid "District"
 msgstr "Район"
 
-#: templates/orders/checkout.html:46
+#: templates/orders/checkout.html:45
 msgid "Region"
 msgstr "Область"
 
-#: templates/orders/checkout.html:71
+#: templates/orders/checkout.html:65
+msgid "Numbers"
+msgstr "Кількість"
+
+#: templates/orders/checkout.html:73
 msgid "Amount due"
 msgstr "Загальна сума"
 
@@ -571,15 +570,19 @@ msgstr "Додати товар до кошика"
 msgid "Buy"
 msgstr "Купити"
 
+#: templates/products/detail.html:132
+msgid "Сode"
+msgstr "Номер деталі"
+
+#: templates/products/detail.html:138
+msgid "Сars"
+msgstr "Сумісність з "
+
+#: templates/products/detail.html:144
+msgid "Year"
+msgstr ""
+
 #: templates/products/detail.html:156
-msgid "Band width"
-msgstr "Шерина ремішка"
-
-#: templates/products/detail.html:168
-msgid "Сoating"
-msgstr "Покриття"
-
-#: templates/products/detail.html:177
 msgid "Description "
 msgstr "Опис"
 
@@ -590,6 +593,39 @@ msgstr "Пошук за"
 #: templates/products/search.html:39
 msgid "No products"
 msgstr "Немає продуктів"
+
+#~ msgid "First name"
+#~ msgstr "Імя"
+
+#~ msgid "Last name"
+#~ msgstr "Прізвища"
+
+#~ msgid "Type"
+#~ msgstr "Тип"
+
+#~ msgid "Material"
+#~ msgstr "Матеріал"
+
+#~ msgid "Water resistance"
+#~ msgstr "Водостійкість"
+
+#~ msgid "Case diameter"
+#~ msgstr "Діаметр корпуса"
+
+#~ msgid "Band Width:"
+#~ msgstr "Шерина ремішка"
+
+#~ msgid "Functions"
+#~ msgstr "Функції"
+
+#~ msgid "Coating"
+#~ msgstr "Покриття"
+
+#~ msgid "Band width"
+#~ msgstr "Шерина ремішка"
+
+#~ msgid "Сoating"
+#~ msgstr "Покриття"
 
 #~ msgid "Case Diameter"
 #~ msgstr "Діаметр корпуса"

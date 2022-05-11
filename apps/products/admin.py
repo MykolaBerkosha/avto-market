@@ -9,7 +9,7 @@ from watermarks.models import WatermarkImage
 class ProductAdmin(admin.ModelAdmin):
 
     list_display = ['id', 'category', 'name', 'price', 'availability',
-                    'number', 'slug', 'description', 'new_price', 'manufacturer',
+                    'slug', 'description', 'new_price', 'manufacturer',
                     'cars', 'code', 'year']
     list_filter = ['category', 'manufacturer', 'availability']
 

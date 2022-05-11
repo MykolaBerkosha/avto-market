@@ -43,7 +43,7 @@ class Product(models.Model):
         db_index=True,
         blank=True)
 
-    description = models.TextField(max_length=1500, blank=True)
+    description = models.TextField(_('Description'), max_length=1500, blank=True)
 
     code = models.CharField(_('Code'), max_length=255, blank=True)
 
@@ -52,8 +52,6 @@ class Product(models.Model):
     year = models.CharField(_('Graduation year'), max_length=255, blank=True)
 
     manufacturer = models.CharField(_('Manufacturer'), max_length=255, blank=True)
-
-    number = models.CharField(_('Number of parts'), max_length=255, blank=True)
 
     def __str__(self):
         return self.name
