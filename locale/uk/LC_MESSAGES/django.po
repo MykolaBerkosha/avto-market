@@ -61,7 +61,7 @@ msgstr "Номер телефону"
 
 #: apps/orders/models.py:15
 msgid "Number of parts"
-msgstr ""
+msgstr "Кількість деталів"
 
 #: apps/orders/models.py:17
 msgid "Created"
@@ -540,7 +540,7 @@ msgstr "Оберіть спосіб доставки"
 
 #: templates/orders/checkout.html:35
 msgid "Delivery method"
-msgstr ""
+msgstr "Метод доставки"
 
 #: templates/orders/checkout.html:41
 msgid "District"

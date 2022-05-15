@@ -22,8 +22,6 @@ urlpatterns = [
 
     path('accounts/', include('accounts.urls')),
 
-    path('callback/', include('apps.callback.urls')),
-
     path('', home, name='home'),
 ]
 

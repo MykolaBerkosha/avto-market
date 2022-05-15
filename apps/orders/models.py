@@ -23,7 +23,7 @@ class Order(models.Model):
         ("SELF-PICKUP", _("Self-pickup"))
     )
 
-    delivery_method = models.CharField(max_length=22, choices=DELIVERY_METHOD_CHOISE, default= "SELF-PICKUP")
+    delivery_method = models.CharField(_('Delivery method'),max_length=22, choices=DELIVERY_METHOD_CHOISE, default= "SELF-PICKUP")
 
     delivery_district_address = models.CharField(_('Delivery district address'), max_length=255, blank=True)
 
